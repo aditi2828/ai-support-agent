@@ -103,9 +103,15 @@ router.post("/chat/stream", async (req, res, next) => {
     });
 
     upstream.data.on("end", async () => {
-      session.messages.push({ role: "assistant", content: fullAnswer, sources });
-      session.updatedAt = new Date();
-      await session.save();
+      try {
+        if (fullAnswer.trim()) {
+          session.messages.push({ role: "assistant", content: fullAnswer, sources });
+          session.updatedAt = new Date();
+          await session.save();
+        }
+      } catch (e) {
+        console.error("Failed to persist streamed message:", e.message);
+      }
       res.end();
     });
 
