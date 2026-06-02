@@ -11,12 +11,12 @@ agent says so instead of hallucinating.
 
 ```
 ┌──────────────┐   HTTP/JSON   ┌──────────────┐   HTTP/JSON   ┌─────────────────┐
-│  Next.js UI  │ ────────────▶ │ Node Gateway │ ────────────▶ │ Python AI Svc  │
-│ (App Router  │ ◀──────────── │  (Express)   │ ◀──────────── │  (FastAPI)     │
-│  + shadcn/ui)│  answer +     │              │  answer +     │  RAG pipeline   │
-└──────────────┘  citations    └──────┬───────┘  citations    └───────┬─────────┘
-                                       │                               │
-                                       ▼                               ▼
+│  Next.js UI  │ ────────────▶ │ Node Gateway │ ────────────▶│ Python AI Svc   │
+│ (App Router  │ ◀──────────── │  (Express)   │ ◀────────────│  (FastAPI)      │
+│  + shadcn/ui)│  answer +     │               │  answer +    │  RAG pipeline   │
+└──────────────┘  citations    └──────┬────────┘  citations   └───────┬─────────┘
+                                       │                              │
+                                       ▼                              ▼
                                  ┌─────────────────────────────────────────┐
                                  │        MongoDB Atlas                    │
                                  │  • sessions   (chat history)            │
