@@ -1,0 +1,16 @@
+services:
+  ai-service:
+    build: ./ai-service
+    env_file: .env
+    ports:
+      - "8000:8000"
+
+  api-gateway:
+    build: ./api-gateway
+    env_file: .env
+    environment:
+      AI_SERVICE_URL: http://ai-service:8000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - ai-service
