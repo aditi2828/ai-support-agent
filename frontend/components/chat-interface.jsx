@@ -20,7 +20,7 @@ export default function ChatInterface() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [useStreaming, setUseStreaming] = useState(true);
+  const [useStreaming, setUseStreaming] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("");
   const [sessionId, setSessionId] = useState("");
   const scrollRef = useRef(null);
